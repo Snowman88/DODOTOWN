@@ -1,8 +1,9 @@
-<html>
-
+{% extends 'town/base.html' %}
+{% block content %}
 <ul>
 {% for town in towns %}
     <li>name: {{ town.name }}</li>
 {% endfor %}
 </ul>
-</html>
+{% endblock %}
+
