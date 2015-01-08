@@ -2,7 +2,7 @@
 {% block content %}
 <ul>
 {% for town in towns %}
-    <li>name: {{ town.name }}</li>
+    <li><a href="{% url 'town.views.town_detail' pk=town.pk %}">name: {{ town.name }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

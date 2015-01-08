@@ -23,3 +23,6 @@ class Shop(models.Model):
         max_length=255, null=True, blank=True, verbose_name="住所")
     created = models.DateTimeField(default=timezone.now)
     modified = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name
