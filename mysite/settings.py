@@ -28,6 +28,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# intcomma
+NUMBER_GROUPING = 3
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -37,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'town',
+    'django.contrib.humanize',
 )
 
 MIDDLEWARE_CLASSES = (

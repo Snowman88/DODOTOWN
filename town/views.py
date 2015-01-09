@@ -15,3 +15,12 @@ def town_detail(request, pk):
         'shops': shops,
     }
     return render(request, 'town/town_detail.html', params)
+
+
+def shop_detail(request, pk):
+    shop = Shop.objects.get(pk=pk)
+
+    params = {
+        'shop': shop
+    }
+    return render(request, 'shop/shop_detail.html', params)

@@ -4,13 +4,16 @@
     <ul>
     {% for shop in shops %}
         <li>
-            <div>
+            <a href="{% url 'town.views.shop_detail' pk=shop.pk %}"><div>
                 {{ shop.name }}
                 <br />
-                owner: {{ shop.owner }}
+                店長: {{ shop.owner }}
                 <br />
                 <br />
-            </div>
+                店長の一言:
+                {{ shop.description|linebreaks }}
+                <br />
+            </div></a>
         </li>
     {% endfor %}
     </ul>
