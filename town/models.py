@@ -73,11 +73,11 @@ class OrderItem(models.Model):
 
 
 class OrderStatus(models.Model):
-    CART_STATUS = 0
-    DEAL_STATUS = 1
+    CART_STATUS = 1
+    DEAL_STATUS = 2
     STATUS_CHOICES = (
-        (CART_STATUS, 'Cart'),
-        (DEAL_STATUS, 'Deal'),
+        (CART_STATUS, 'カート'),
+        (DEAL_STATUS, '契約'),
     )
 
     order = models.OneToOneField('Order')
