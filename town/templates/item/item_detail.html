@@ -23,8 +23,8 @@
                 </div>
                 <br>
                 <div>
-                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span> カートに入れる</button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-heart" style="color:#d9534f !important;"></span></button>
+                    <button type="button" class="btn btn-warning {% if not user.is_authenticated %}disabled{% endif %}"><span class="glyphicon glyphicon-shopping-cart"></span> カートに入れる</button>
+                    <button type="button" class="btn btn-default {% if not user.is_authenticated %}disabled{% endif %}"><span class="glyphicon glyphicon-heart" style="color:#d9534f !important;"></span></button>
 
 
                 </div>

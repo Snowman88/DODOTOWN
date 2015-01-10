@@ -9,7 +9,7 @@ def town_list(request):
 
 def town_detail(request, pk):
     town = Town.objects.get(pk=pk)
-    shops = Shop.objects.all()
+    shops = Shop.objects.filter(area=town)
     params = {
         'town': town,
         'shops': shops,
