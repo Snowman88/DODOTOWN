@@ -1,0 +1,26 @@
+{% extends 'town/base.html' %}
+{% load humanize %}
+{% block content %}
+    <div class="row col-md-12">
+            <div class="col-md-8">
+                <img src="http://lorempixel.com/500/400/food/" alt="...">
+                <br>
+                <br>
+                <br>
+                <div>
+                    <img src="http://lorempixel.com/35/42/food/" alt="...">
+                    <img src="http://lorempixel.com/35/42/food/" alt="...">
+                    <img src="http://lorempixel.com/35/42/food/" alt="...">
+                    <img src="http://lorempixel.com/35/42/food/" alt="...">
+                    <img src="http://lorempixel.com/35/42/food/" alt="...">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3>{{ item.name }}</h3>
+                <strong>{{ item.price|intcomma }}</strong>
+                <div>
+                {{ item.description|linebreaks }}
+                </div>
+            </div>
+    </div>
+{% endblock %}
