@@ -17,7 +17,21 @@
             </div>
             <div class="col-md-4">
                 <h3>{{ item.name }}</h3>
-                <strong>{{ item.price|intcomma }}</strong>
+                <p class="text-danger" style="font-size:40px !important;">{{ item.price|intcomma }}</p>
+                <div>
+                    <img src="http://lorempixel.com/270/180/food/" alt="...">
+                </div>
+                <br>
+                <div>
+                    <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span> カートに入れる</button>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-heart" style="color:#d9534f !important;"></span></button>
+
+
+                </div>
+                
+            </div>
+            <div class="col-md-12">
+                <h3>アイテム説明</h3>
                 <div>
                 {{ item.description|linebreaks }}
                 </div>
