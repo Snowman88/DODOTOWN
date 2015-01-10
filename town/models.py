@@ -51,11 +51,36 @@ class Stock(models.Model):
         return "{} * {}".format(self.item.name, self.quantity)
 
 
-# class Item(models.Model):
-#     name = models.CharField(max_length=255, verbose_name="商品名")
-#     cost = models.IntegerField(null=True, blank=True, verbose_name="原価")
-#     created = models.DateTimeField(default=timezone.now)
-#     modified = models.DateTimeField(default=timezone.now)
+class Order(models.Model):
+    customer = models.ForeignKey('auth.User')
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return "Ordered at {}".format(self.created.strftime("%Y-%m-%d %H:%m:%s"))
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey('Order')
+    item = models.ForeignKey('Item')
+    quantity = models.IntegerField()
+
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.item.name
+
+
+class OrderStatus(models.Model):
+    CART_STATUS = 0
+    DEAL_STATUS = 1
+    STATUS_CHOICES = (
+        (CART_STATUS, 'Cart'),
+        (DEAL_STATUS, 'Deal'),
+    )
+
+    order = models.OneToOneField('Order')
+    status = models.IntegerField(choices=STATUS_CHOICES)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
