@@ -6,8 +6,12 @@
     <br>
     {{ shop.description| linebreaks }}
     <h2>商品一覧</h2>
-    <ul>
+    
     {% with stocks=shop.stock_set.all %}
+    {% if not stocks %}
+    ただいま商品がありません。
+    {% else %}
+    <ul>
     {% for stock in stocks %}
         {% with item=stock.item %}
         <li>{{ item.name }}　<br>
@@ -16,6 +20,8 @@
             残り {{ stock.quantity }}</li>
         {% endwith %}
     {% endfor %}
-    {% endwith %}
     </ul>
+    {% endif %}
+    {% endwith %}
+    
 {% endblock %}
