@@ -17,7 +17,9 @@
         <li>{{ item.name }}　<br>
             金額　{{ item.price|intcomma }}
             <br>
-            残り {{ stock.quantity }}</li>
+            残り {{ stock.quantity }}
+            <br>
+            {{ item.description|linebreaks }}</li>
         {% endwith %}
     {% endfor %}
     </ul>
