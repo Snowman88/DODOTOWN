@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Town, Shop
+from .models import Town, Shop, Item
 
 
 def town_list(request):
@@ -24,3 +24,12 @@ def shop_detail(request, pk):
         'shop': shop
     }
     return render(request, 'shop/shop_detail.html', params)
+
+
+def item_detail(request, pk):
+    item = Item.objects.get(pk=pk)
+
+    params = {
+        'item': item
+    }
+    return render(request, 'item/item_detail.html', params)
