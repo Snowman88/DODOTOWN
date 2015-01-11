@@ -44,10 +44,12 @@ def cart_add(request):
         item = Item.objects.get(pk=item_id)
         quantity = 1
         try:
+            # すでに同じ商品がある場合
             cart_item = CartItem.objects.get(item=item)
             cart_item.quantity += quantity
             cart_item.save()
         except CartItem.DoesNotExist:
+            # 新規商品
             cart_item = CartItem(cart=cart, item=item, quantity=quantity)
             cart_item.save()
 
