@@ -57,7 +57,8 @@ class Order(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return "Ordered at {}".format(self.created.strftime("%Y-%m-%d %H:%m:%s"))
+        return "Ordered at {}".format(
+            self.created.strftime("%Y-%m-%d %H:%m:%s"))
 
 
 class OrderItem(models.Model):
@@ -73,10 +74,8 @@ class OrderItem(models.Model):
 
 
 class OrderStatus(models.Model):
-    CART_STATUS = 1
-    DEAL_STATUS = 2
+    DEAL_STATUS = 1
     STATUS_CHOICES = (
-        (CART_STATUS, 'カート'),
         (DEAL_STATUS, '契約'),
     )
 
@@ -84,3 +83,25 @@ class OrderStatus(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+
+class Cart(models.Model):
+    customer = models.OneToOneField('auth.User')
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return "Ordered at {}".format(
+            self.created.strftime("%Y-%m-%d %H:%m:%s"))
+
+
+class CartItem(models.Model):
+    cart = models.ForeignKey('Cart')
+    item = models.ForeignKey('Item')
+    quantity = models.IntegerField()
+
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.item.name

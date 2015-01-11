@@ -23,7 +23,11 @@
                 </div>
                 <br>
                 <div>
-                    <button type="button" class="btn btn-warning {% if not user.is_authenticated %}disabled{% endif %}"><span class="glyphicon glyphicon-shopping-cart"></span> カートに入れる</button>
+                    <form action="{% url 'town.views.cart_add' %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.pk }}" />
+                        <button type="submit" class="btn btn-warning {% if not user.is_authenticated %}disabled{% endif %}"><span class="glyphicon glyphicon-shopping-cart"></span> カートに入れる</button>
+                    </form>
                     <button type="button" class="btn btn-default {% if not user.is_authenticated %}disabled{% endif %}"><span class="glyphicon glyphicon-heart" style="color:#d9534f !important;"></span></button>
 
 
