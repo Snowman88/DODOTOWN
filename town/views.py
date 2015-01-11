@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import Http404
+from django.contrib import messages
 from .models import Town, Shop, Item, Cart, CartItem
 
 
@@ -43,16 +44,17 @@ def cart_add(request):
         item_id = request.POST.get("item_id", 0)
         item = Item.objects.get(pk=item_id)
         quantity = 1
+        cart_item = None
         try:
             # すでに同じ商品がある場合
             cart_item = CartItem.objects.get(item=item)
             cart_item.quantity += quantity
-            cart_item.save()
         except CartItem.DoesNotExist:
             # 新規商品
             cart_item = CartItem(cart=cart, item=item, quantity=quantity)
-            cart_item.save()
-
+        # save
+        cart_item.save()
+        messages.success(request, 'カートに商品が追加されました。')
         return redirect('town.views.item_detail', pk=item_id)
     else:
         raise Http404
