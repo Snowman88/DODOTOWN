@@ -1,0 +1,33 @@
+{% extends 'town/base.html' %}
+{% load humanize %}
+{% block content %}
+    <h2>お買い物かご</h2>
+    {% with cart_items=cart.cartitem_set.all %}
+    <ul>
+    {% for cart_item in cart_items %}
+        <li style="margin-bottom:15px;list-style-type:none;height:125px;">
+            <div class="row col-md-12">
+                <div class="col-md-2">
+                <a href="{% url 'town.views.item_detail' pk=cart_item.item.pk %}"><img src="http://lorempixel.com/270/180/food/" width="125" height="125"></a></div>
+                <div class="col-md-3">
+                {{ cart_item.item.name|truncatechars:15 }}
+                <br>
+                <br>
+                <br>
+                <span class="text-danger">返品・交換対象外</span>
+                </div>
+                <div class="col-md-2" style="vertical-align:bottom;height:125px;">
+                <span class="text-danger">¥</span><span class="text-danger">{{ cart_item.item.price|intcomma }}</span>
+                </div>
+                <div class="col-md-2">
+                数量:<span>{{ cart_item.quantity }}</span>
+                </div>
+                <div class="col-md-2">
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> 削除</button>
+                </div>
+            </div>
+            </li>
+    {% endfor %}
+    </ul>
+    {% endwith %}
+{% endblock %}

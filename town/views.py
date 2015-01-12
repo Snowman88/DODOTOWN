@@ -36,6 +36,14 @@ def item_detail(request, pk):
     return render(request, 'item/item_detail.html', params)
 
 
+def cart_list(request):
+    cart = Cart.objects.get(customer=request.user)
+    params = {
+        'cart': cart
+    }
+    return render(request, 'cart/cart_list.html', params)
+
+
 def cart_add(request):
     if request.method == 'POST':
         # cart がないなら作成
@@ -47,7 +55,7 @@ def cart_add(request):
         cart_item = None
         try:
             # すでに同じ商品がある場合
-            cart_item = CartItem.objects.get(item=item)
+            cart_item = CartItem.objects.get(cart=cart, item=item)
             cart_item.quantity += quantity
         except CartItem.DoesNotExist:
             # 新規商品

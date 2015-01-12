@@ -91,8 +91,7 @@ class Cart(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return "Ordered at {}".format(
-            self.created.strftime("%Y-%m-%d %H:%m:%s"))
+        return "購入者: {}".format(self.customer.username)
 
 
 class CartItem(models.Model):
