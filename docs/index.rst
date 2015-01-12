@@ -10,9 +10,11 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-
+   :glob:
+   
    expert_python
    art_of_community
+   rst/*
 
 Indices and tables
 ==================
