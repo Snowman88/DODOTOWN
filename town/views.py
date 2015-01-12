@@ -66,3 +66,16 @@ def cart_add(request):
         return redirect('town.views.item_detail', pk=item_id)
     else:
         raise Http404
+
+
+def cart_delete(request):
+    if request.method == 'POST':
+        item_id = request.POST.get("item_id", 0)
+        # 一件しか取得されない
+        cart_items = Cart.objects.get(
+            customer=request.user).cartitem_set.filter(item_id=item_id)
+        item_name = cart_items[0].item.name
+        # 削除
+        cart_items.delete()
+        messages.success(request, '{}が削除されました。'.format(item_name))
+        return redirect('town.views.cart_list')

@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url(r'^item/(?P<pk>[0-9]+)/$', views.item_detail),
     url(r'^cart/$', views.cart_list),
     url(r'^cart/add/$', views.cart_add),
+    url(r'^cart/delete/$', views.cart_delete),
 
 )

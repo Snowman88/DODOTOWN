@@ -23,7 +23,11 @@
                 数量:<span>{{ cart_item.quantity }}</span>
                 </div>
                 <div class="col-md-2">
-                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> 削除</button>
+                <form action="{% url 'town.views.cart_delete' %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="item_id" value="{{ cart_item.item.pk }}" />
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> 削除</button>
+                </form>
                 </div>
             </div>
             </li>
