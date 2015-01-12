@@ -44,7 +44,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'ZOZOTOWN'
+project = 'DODOTOWN'
 copyright = '2015, Snowman'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -177,7 +177,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ZOZOTOWNdoc'
+htmlhelp_basename = 'DODOTOWNdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -197,7 +197,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'ZOZOTOWN.tex', 'ZOZOTOWN Documentation',
+  ('index', 'DODOTOWN.tex', 'DODOTOWN Documentation',
    'Snowman', 'manual'),
 ]
 
@@ -227,7 +227,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'zozotown', 'ZOZOTOWN Documentation',
+    ('index', 'dodotown', 'DODOTOWN Documentation',
      ['Snowman'], 1)
 ]
 
@@ -241,8 +241,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'ZOZOTOWN', 'ZOZOTOWN Documentation',
-   'Snowman', 'ZOZOTOWN', 'One line description of project.',
+  ('index', 'DODOTOWN', 'DODOTOWN Documentation',
+   'Snowman', 'DODOTOWN', 'One line description of project.',
    'Miscellaneous'),
 ]
 
